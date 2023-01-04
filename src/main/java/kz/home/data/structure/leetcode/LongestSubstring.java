@@ -16,7 +16,6 @@ public class LongestSubstring {
         System.out.println(lengthOfLongestSubstring("testingstring"));
     }
 
-    //asdfasf
     private static int lengthOfLongestSubstring(String s) {
         HashSet<Character> hashSet = new HashSet<>();
         int answer = 0;
