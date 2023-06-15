@@ -1,9 +1,7 @@
 package kz.home.data.structure.leetcode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author duman
@@ -12,7 +10,7 @@ import java.util.List;
  */
 public class RemoveAnagram {
     public static void main(String[] args) {
-        System.out.println(removeAnagram(new String[]{"duman", "umand", "rakhat", "rakhata", "afif", "fifa"}));
+        System.out.println(removeAnagramHashMap(new String[]{"damun", "duman", "umand", "rakhat", "rakhata", "afif", "fifa"}));
     }
 
     public static List<String> removeAnagram(String[] arr) {
@@ -28,6 +26,17 @@ public class RemoveAnagram {
 
         Collections.sort(result);
         return result;
+    }
+
+    public static List<String> removeAnagramHashMap(String[] arr) {
+        HashMap<String, String> map = new HashMap<>();
+        for(String s : arr) {
+            String sorted = sortString(s);
+            map.putIfAbsent(sorted, s);
+        }
+        return map.values().stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public static String sortString(String s) {
